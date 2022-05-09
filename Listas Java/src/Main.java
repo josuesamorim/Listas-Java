@@ -23,6 +23,13 @@ public class Main {
 			System.out.println("Employee #" + i);
 			System.out.println("Id:");
 			Integer id = scan.nextInt();
+
+			while (hasId(employeersList, id)) {
+				System.out.println("Id already taken! Try again.");
+				System.out.println("Id:");
+				id = scan.nextInt();
+			}
+
 			System.out.println("Name:");
 			String name = scan.next();
 			System.out.println("Salary:");
@@ -36,6 +43,7 @@ public class Main {
 
 		System.out.println("Enter the employee ID that you hava salary increase.");
 		int idSalary = scan.nextInt();
+
 		Employee employee = employeersList.stream().filter(x -> x.getId() == idSalary).findFirst().orElse(null);
 
 		if (employee == null) {
@@ -48,12 +56,18 @@ public class Main {
 		}
 
 		System.out.println("List of employeers:");
-		
-		for(Employee emp : employeersList) {
+
+		for (Employee emp : employeersList) {
 			System.out.println(emp);
 		}
 
 		scan.close();
 
 	}
+
+	public static boolean hasId(List<Employee> employeersList, int idSalary) {
+		Employee employee = employeersList.stream().filter(x -> x.getId() == idSalary).findFirst().orElse(null);
+		return employee != null;
+	}
+
 }
