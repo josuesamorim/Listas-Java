@@ -1,2 +1,2 @@
-# Listas-Java
-Aprendendo a usar listas em java
+# Lists - Java
+Learning to use lists in java.
